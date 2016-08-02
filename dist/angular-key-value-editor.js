@@ -243,14 +243,19 @@
               //   we assume the presence of is-readonly similar to disabled and other html
               //   attributes that are 'truthy' though they have no actual value.
               // workaround?
-              //   potentially using ng-attr-cannot-delete=false?
+              //   potentially using ng-attr-cannot-delete="undefined"?
               $scope.$watch('cannotDelete', function(newVal) {
                 if(angular.isArray(newVal)) {
                   $scope.cannotDeleteAny = false;
                   cannotDeleteSome = newVal;
                 }
               });
-              $scope.$watch('isReadonly', function(newVal) {
+              //
+              //
+              //
+              //
+              $scope.$watch('isReadonly', function(newVal, oldVal) {
+                console.log('$watch() isReadonly', newVal, ':', oldVal);
                 if(angular.isArray(newVal)) {
                   $scope.isReadonlyAny = false;
                   readOnlySome = newVal;
